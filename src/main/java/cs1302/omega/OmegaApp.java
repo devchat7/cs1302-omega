@@ -31,7 +31,7 @@ public class OmegaApp extends Application {
     int ballSpeedY = 1;
     int startXUser = 0;
     int startXOpp = width - paddleWidth;
-    int startYUser = height / 2;
+    double startYUser = height / 2;
     int startYPosOpp = height / 2;
     int scoreUser = 0;
     int scoreOpp = 0;
@@ -52,7 +52,8 @@ public class OmegaApp extends Application {
     public void start(Stage stage) {
         Canvas canvas = new Canvas(width, height);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
+        canvas.setOnMouseMoved(e -> startYUser  = e.getY());
+		canvas.setOnMouseClicked(e ->  gameStart = true);
 
         //setup Stage
         stage.setTitle("OmegaApp!");
