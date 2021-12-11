@@ -19,6 +19,25 @@ import javafx.util.Duration;
  */
 public class OmegaApp extends Application {
 
+    //initializing variables
+    private static int width = 800;
+	private static int height = 600;
+    private static int paddleWidth = 10;
+    private static int paddleHeight = 100;
+    private static int diameter = 15;
+
+    int ballSpeedX = 1;
+    int ballSpeedY = 1;
+    int startXUser = 0;
+    int startXOpp = width - paddleWidth;
+    int startYUser = height/2;
+    int startYPosOpp = height/2;
+    int scoreUser = 0;
+    int scoreOpp = 0;
+    boolean gameStart;
+    int ballXPos = width/2;
+    int ballYPos = height/2;
+
 /**
  * Constructs an {@code OmegaApp} object. This default (i.e., no argument)
  * constructor is executed in Step 2 of the JavaFX Application Life-Cycle.
@@ -28,6 +47,7 @@ public class OmegaApp extends Application {
     public void start(Stage stage) {
 
     } // start
+
 
 } // OmegaApp
 
