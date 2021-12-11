@@ -1,32 +1,43 @@
 package cs1302.omega;
 
-import cs1302.game.DemoGame;
-
+import java.util.Random;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * REPLACE WITH NON-SHOUTING DESCRIPTION OF YOUR APP.
  */
 public class OmegaApp extends Application {
 
-    /**
-     * Constructs an {@code OmegaApp} object. This default (i.e., no argument)
-     * constructor is executed in Step 2 of the JavaFX Application Life-Cycle.
-     */
+/**
+ * Constructs an {@code OmegaApp} object. This default (i.e., no argument)
+ * constructor is executed in Step 2 of the JavaFX Application Life-Cycle.
+ */
     public OmegaApp() {}
 
-    /** {@inheritDoc} */
-    @Override
     public void start(Stage stage) {
 
-        // demonstrate how to load local asset using "file:resources/"
+    } // start
+
+} // OmegaApp
+
+
+
+
+
+
+/*
+// demonstrate how to load local asset using "file:resources/"
         Image bannerImage = new Image("file:resources/readme-banner.png");
         ImageView banner = new ImageView(bannerImage);
         banner.setPreserveRatio(true);
@@ -53,7 +64,4 @@ public class OmegaApp extends Application {
 
         // play the game
         game.play();
-
-    } // start
-
-} // OmegaApp
+*/
