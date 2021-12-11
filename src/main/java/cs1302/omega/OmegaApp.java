@@ -23,7 +23,7 @@ public class OmegaApp extends Application {
     //initializing variables
     private static int width = 800;
     private static int height = 600;
-    private static int paddleWidth = 10;
+    private static int paddleWidth = 15;
     private static int paddleHeight = 100;
     private static int diameter = 15;
 
@@ -32,7 +32,7 @@ public class OmegaApp extends Application {
     int startXUser = 0;
     int startXOpp = width - paddleWidth;
     double startYUser = height / 2;
-    int startYPosOpp = height / 2;
+    int startYOpp = height / 2;
     int scoreUser = 0;
     int scoreOpp = 0;
     boolean gameStart;
@@ -46,23 +46,35 @@ public class OmegaApp extends Application {
     public OmegaApp() {}
 
     /**
-     * ENTER JAVADOC COMMENT.
+     * Start method that runs the overall program.
      * @param stage the Stage.
      */
     public void start(Stage stage) {
         Canvas canvas = new Canvas(width, height);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
+        tl.setCycleCount(Timeline.INDEFINITE);
         canvas.setOnMouseMoved(e -> startYUser  = e.getY());
 		canvas.setOnMouseClicked(e ->  gameStart = true);
-
         //setup Stage
         stage.setTitle("OmegaApp!");
         stage.setScene(new Scene(new StackPane(canvas)));
         stage.setOnCloseRequest(event -> Platform.exit());
         stage.sizeToScene();
         stage.show();
+        tl.play();
     } // start
 
+    /**
+     * Creats the aspects for the stage. Inputs the graphics content from the canvas to display.
+     * @param gc the GraphicsContext implementation that will be used in a timeline at start.
+     */
+    private void run(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+		gc.fillRect(0, 0, width, height);
+		gc.setFill(Color.WHITE);
+		gc.setFont(Font.font(25));
+    } //run
 
 } // OmegaApp
 
