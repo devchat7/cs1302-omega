@@ -94,11 +94,39 @@ public class OmegaApp extends Application {
 			gc.strokeText("PONG! Click to Launch the Ball!", width / 2, height / 2);
 			ballPosX = width / 2;
 			ballPosY = height / 2;
-			ballSpeedX = new Random().nextInt(2) == 0 ? 1: -1;
-			ballSpeedY = new Random().nextInt(2) == 0 ? 1: -1;
+            if (new Random().nextInt(2) == 0) {
+                ballSpeedX = 1;
+            } else {
+                ballSpeedX = -1;
+            } //if
+            if (new Random().nextInt(2) == 0) {
+                ballSpeedY = 1;
+            } else {
+                ballSpeedY = -1;
+            } //if
         } //else
+
+        score();
+        border();
+
     } //run
 
+    private void border() {
+        if (ballPosY > height || ballPosY < 0) {
+            ballSpeedY *= -1;
+        } //if
+    } //border
+
+    private void score() {
+        if (ballPosX > startXOpp + paddleWidth) {
+            scoreUser++;
+            gameStart = false;
+        } //if
+        if (ballPosX < startXUser - paddleWidth) {
+            scoreOpp++;
+            gameStart = false;
+        } //if
+    }
 } // OmegaApp
 
 
