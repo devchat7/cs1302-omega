@@ -105,18 +105,24 @@ public class OmegaApp extends Application {
                 ballSpeedY = -1;
             } //if
         } //else
-
+        gc.fillText(scoreUser + "             " + scoreOpp, width / 2, 100);
         score();
         border();
-
     } //run
 
+    /**
+     * Creates the bottom and the top border so that ball can
+     * bounce off.
+     */
     private void border() {
         if (ballPosY > height || ballPosY < 0) {
             ballSpeedY *= -1;
         } //if
     } //border
 
+    /**
+     * Calculates the score and puts on display.
+     */
     private void score() {
         if (ballPosX > startXOpp + paddleWidth) {
             scoreUser++;
