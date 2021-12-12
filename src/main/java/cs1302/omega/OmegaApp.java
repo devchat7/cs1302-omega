@@ -36,8 +36,8 @@ public class OmegaApp extends Application {
     int scoreUser = 0;
     int scoreOpp = 0;
     boolean gameStart;
-    int ballXPos = width / 2;
-    int ballYPos = height / 2;
+    int ballPosX = width / 2;
+    int ballPosY = height / 2;
 
 /**
  * Constructs an {@code OmegaApp} object. This default (i.e., no argument)
@@ -74,6 +74,29 @@ public class OmegaApp extends Application {
 		gc.fillRect(0, 0, width, height);
 		gc.setFill(Color.WHITE);
 		gc.setFont(Font.font(25));
+        if (gameStart) {
+            ballPosX += ballSpeedX;
+            ballPosY += ballSpeedY;
+            if (ballPosX < width - (width / 4)) {
+                startYOpp = ballPosY - paddleHeight / 2;
+            } else {
+                if (ballPosY > startYOpp + paddleHeight / 2) {
+                    startYOpp = startYOpp += 1;
+                } else {
+                    startYOpp = startYOpp - 1;
+                } //else
+            }//if
+
+            gc.fillOval(ballPosX, ballPosY, diameter, diameter);
+        } else {
+            gc.setStroke(Color.RED);
+			gc.setTextAlign(TextAlignment.CENTER);
+			gc.strokeText("PONG! Click to Launch the Ball!", width / 2, height / 2);
+			ballPosX = width / 2;
+			ballPosY = height / 2;
+			ballSpeedX = new Random().nextInt(2) == 0 ? 1: -1;
+			ballSpeedY = new Random().nextInt(2) == 0 ? 1: -1;
+        } //else
     } //run
 
 } // OmegaApp
