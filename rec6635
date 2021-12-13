@@ -1,0 +1,144 @@
+cs1302-omega:
+total 76
+-rw-r--r--. 1 myid  9998 Dec  9 11:55 APPENDIX_API.rst
+-rw-r--r--. 1 myid  3049 Dec  9 11:55 APPENDIX_GAME.rst
+-rw-r--r--. 1 myid  4205 Dec  9 11:55 APPENDIX_GIT.rst
+-rwxr-xr-x. 1 myid   197 Dec  9 11:55 compile.sh
+drwxr-xr-x. 2 myid    59 Dec 13 14:54 meta
+-rw-r--r--. 1 myid  7299 Dec  9 11:55 pom.xml
+-rwxr-xr-x. 1 myid   105 Dec  9 11:55 prepare-merge.sh
+-rw-r--r--. 1 myid 28835 Dec 13 17:00 README.rst
+-rw-r--r--. 1 myid     0 Dec 13 17:05 rec6635
+drwxr-xr-x. 3 myid   117 Dec  9 11:55 resources
+-rwxr-xr-x. 1 myid   271 Dec  9 11:55 site.sh
+drwxr-xr-x. 4 myid    42 Dec  9 11:55 src
+drwxr-xr-x. 5 myid    82 Dec 13 16:52 target
+
+cs1302-omega/meta:
+total 8
+-rw-r--r--. 1 myid  509 Dec  9 11:55 ATTRIBUTION.md
+-rw-r--r--. 1 myid 1990 Dec 13 14:54 DEADLINE.md
+
+cs1302-omega/resources:
+total 2084
+-rw-r--r--. 1 myid      41 Dec  9 11:55 config.properties
+-rw-r--r--. 1 myid  582183 Dec  9 11:55 readme-banner.png
+-rw-r--r--. 1 myid 1540930 Dec  9 11:55 readme-newrepo.png
+drwxr-xr-x. 2 myid      34 Dec  9 11:55 sprites
+
+cs1302-omega/resources/sprites:
+total 4
+-rw-r--r--. 1 myid 781 Dec  9 11:55 cat_idle.gif
+
+cs1302-omega/src:
+total 0
+drwxr-xr-x. 3 myid 26 Dec  9 11:55 main
+drwxr-xr-x. 3 myid 50 Dec  9 11:55 site
+
+cs1302-omega/src/main:
+total 0
+drwxr-xr-x. 3 myid 56 Dec  9 11:55 java
+
+cs1302-omega/src/main/java:
+total 4
+drwxr-xr-x. 5 myid  58 Dec  9 11:55 cs1302
+-rw-r--r--. 1 myid 313 Dec  9 11:55 module-info.java
+
+cs1302-omega/src/main/java/cs1302:
+total 0
+drwxr-xr-x. 2 myid 103 Dec  9 11:55 api
+drwxr-xr-x. 2 myid  80 Dec  9 11:55 game
+drwxr-xr-x. 2 myid  63 Dec 13 17:02 omega
+
+cs1302-omega/src/main/java/cs1302/api:
+total 16
+-rw-r--r--. 1 myid 3294 Dec  9 11:55 OpenLibrarySearchApi.java
+-rw-r--r--. 1 myid 1670 Dec  9 11:55 PropertiesExample.java
+-rw-r--r--. 1 myid 5750 Dec  9 11:55 Tools.java
+
+cs1302-omega/src/main/java/cs1302/game:
+total 16
+-rw-r--r--. 1 myid 3152 Dec  9 11:55 DemoGame.java
+-rw-r--r--. 1 myid 5248 Dec  9 11:55 Game.java
+-rw-r--r--. 1 myid 1405 Dec  9 11:55 IdleCat.java
+
+cs1302-omega/src/main/java/cs1302/omega:
+total 16
+-rw-r--r--. 1 myid 8210 Dec 13 17:02 OmegaApp.java
+-rw-r--r--. 1 myid 1295 Dec  9 11:55 OmegaDriver.java
+
+cs1302-omega/src/site:
+total 4
+drwxr-xr-x. 2 myid  33 Dec  9 11:55 markdown
+-rw-r--r--. 1 myid 424 Dec  9 11:55 site.xml
+
+cs1302-omega/src/site/markdown:
+total 4
+-rw-r--r--. 1 myid 133 Dec  9 11:55 index.md.vm
+
+cs1302-omega/target:
+total 0
+drwxr-xr-x. 4 myid 164 Dec 13 16:52 classes
+drwxr-xr-x. 3 myid  33 Dec 13 16:52 generated-sources
+drwxr-xr-x. 3 myid  43 Dec 13 16:52 maven-status
+
+cs1302-omega/target/classes:
+total 2088
+-rw-r--r--. 1 myid      41 Dec 13 16:52 config.properties
+drwxr-xr-x. 5 myid      58 Dec 13 16:52 cs1302
+-rw-r--r--. 1 myid     331 Dec 13 16:52 module-info.class
+-rw-r--r--. 1 myid  582183 Dec 13 16:52 readme-banner.png
+-rw-r--r--. 1 myid 1540930 Dec 13 16:52 readme-newrepo.png
+drwxr-xr-x. 2 myid      34 Dec 13 16:52 sprites
+
+cs1302-omega/target/classes/cs1302:
+total 0
+drwxr-xr-x. 2 myid 106 Dec 13 16:52 api
+drwxr-xr-x. 2 myid  83 Dec 13 16:52 game
+drwxr-xr-x. 2 myid  65 Dec 13 16:52 omega
+
+cs1302-omega/target/classes/cs1302/api:
+total 12
+-rw-r--r--. 1 myid 3929 Dec 13 16:52 OpenLibrarySearchApi.class
+-rw-r--r--. 1 myid 1680 Dec 13 16:52 PropertiesExample.class
+-rw-r--r--. 1 myid 4059 Dec 13 16:52 Tools.class
+
+cs1302-omega/target/classes/cs1302/game:
+total 16
+-rw-r--r--. 1 myid 3096 Dec 13 16:52 DemoGame.class
+-rw-r--r--. 1 myid 4560 Dec 13 16:52 Game.class
+-rw-r--r--. 1 myid 1258 Dec 13 16:52 IdleCat.class
+
+cs1302-omega/target/classes/cs1302/omega:
+total 12
+-rw-r--r--. 1 myid 7430 Dec 13 16:52 OmegaApp.class
+-rw-r--r--. 1 myid 1517 Dec 13 16:52 OmegaDriver.class
+
+cs1302-omega/target/classes/sprites:
+total 4
+-rw-r--r--. 1 myid 781 Dec 13 16:52 cat_idle.gif
+
+cs1302-omega/target/generated-sources:
+total 0
+drwxr-xr-x. 2 myid 6 Dec 13 16:52 annotations
+
+cs1302-omega/target/generated-sources/annotations:
+total 0
+
+cs1302-omega/target/maven-status:
+total 0
+drwxr-xr-x. 3 myid 29 Dec 13 16:52 maven-compiler-plugin
+
+cs1302-omega/target/maven-status/maven-compiler-plugin:
+total 0
+drwxr-xr-x. 3 myid 37 Dec 13 16:52 compile
+
+cs1302-omega/target/maven-status/maven-compiler-plugin/compile:
+total 0
+drwxr-xr-x. 2 myid 64 Dec 13 16:52 default-compile
+
+cs1302-omega/target/maven-status/maven-compiler-plugin/compile/default-compile:
+total 8
+-rw-r--r--. 1 myid 249 Dec 13 16:52 createdFiles.lst
+-rw-r--r--. 1 myid 663 Dec 13 16:52 inputFiles.lst
+/home/myid/dsc33586/cs1302-omega:/home/myid/csci-1302

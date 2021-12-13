@@ -16,7 +16,7 @@ PONG Arcade Game. This game is made to resemble the friendly, and familiar
     PONG game. The user uses a mouse and the paddle (left side) is set to follow the
     cursor. Score points by beating your opponent by moving the paddle to bounce the
     ball off. The ball is set to change speed as it hits the paddle, and the direction
-    of the ball starts at random and moves accordingly.
+    of the ball starts at random and moves accordingly. First one to 3 wins!
 
 ## Part 2: New
 
