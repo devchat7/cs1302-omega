@@ -89,7 +89,7 @@ public class OmegaApp extends Application {
         if (gameStart) {
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
-            if (ballPosX < width) { //- (width / 4)) {
+            if (ballPosX < width) {
                 startYOpp = ballPosY - paddleHeight / 2;
             } else {
                 if (ballPosY > startYOpp + paddleHeight / 2) {
@@ -109,6 +109,7 @@ public class OmegaApp extends Application {
             ballSpeedY *= -1;
             ballSpeedX += new Random().nextInt(3) * Math.signum(ballSpeedX);
             ballSpeedX *= -1;
+            miss();
             System.out.println(ballSpeedX);
             System.out.println(ballSpeedY);
         } //if
@@ -211,16 +212,17 @@ public class OmegaApp extends Application {
 
     /**
      * Random occasion for the AI to miss.
-
+     * The AI can only miss when the speed surpasses 12.
+     * Makes the game very difficult to win!
+     */
     private void miss() {
-        if ((ballSpeedX == 7 && ballSpeedY == 7) || (ballSpeedX == -7 && ballSpeedY == -7)) {
-            Random rand = new Random().nextInt(10);
-            if (rand == 1) {
-                startYOpp = ballPosY + 3;
+        int rand = new Random().nextInt(3);
+        int num = 0;
+        if ((ballSpeedX >= 12 || ballSpeedX <= -12) && rand == num) {
+            System.out.println(rand);
+            startYOpp += 1000;
             } //if
-        } //if
     } //miss
-    */
 } // OmegaApp
 
 
