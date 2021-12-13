@@ -221,7 +221,7 @@ public class OmegaApp extends Application {
         if ((ballSpeedX >= 12 || ballSpeedX <= -12) && rand == num) {
             System.out.println(rand);
             startYOpp += 1000;
-            } //if
+        } //if
     } //miss
 } // OmegaApp
 
