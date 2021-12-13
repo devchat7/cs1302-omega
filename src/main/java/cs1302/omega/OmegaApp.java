@@ -89,7 +89,7 @@ public class OmegaApp extends Application {
         if (gameStart) {
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
-            if (ballPosX < width - (width / 4)) {
+            if (ballPosX < width) { //- (width / 4)) {
                 startYOpp = ballPosY - paddleHeight / 2;
             } else {
                 if (ballPosY > startYOpp + paddleHeight / 2) {
@@ -105,10 +105,12 @@ public class OmegaApp extends Application {
         if (((ballPosX + diameter > startXOpp) && ballPosY >= startYOpp &&
             ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
             + paddleWidth) && ballPosY >= startYUser && ballPosY <= startYUser + paddleHeight)) {
-            ballSpeedY += 1 * Math.signum(ballSpeedY);
+            ballSpeedY += new Random().nextInt(3) * Math.signum(ballSpeedY);
             ballSpeedY *= -1;
-            ballSpeedX += 1 * Math.signum(ballSpeedX);
+            ballSpeedX += new Random().nextInt(3) * Math.signum(ballSpeedX);
             ballSpeedX *= -1;
+            System.out.println(ballSpeedX);
+            System.out.println(ballSpeedY);
         } //if
         gc.fillText(scoreUser + "             " + scoreOpp, width / 2, 100);
         gc.fillRect(startXOpp, startYOpp, paddleWidth, paddleHeight);
@@ -206,6 +208,19 @@ public class OmegaApp extends Application {
             ballSpeedY = -1;
         } //if
     } //gameStart
+
+    /**
+     * Random occasion for the AI to miss.
+
+    private void miss() {
+        if ((ballSpeedX == 7 && ballSpeedY == 7) || (ballSpeedX == -7 && ballSpeedY == -7)) {
+            Random rand = new Random().nextInt(10);
+            if (rand == 1) {
+                startYOpp = ballPosY + 3;
+            } //if
+        } //if
+    } //miss
+    */
 } // OmegaApp
 
 
