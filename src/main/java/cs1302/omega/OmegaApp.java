@@ -28,8 +28,8 @@ public class OmegaApp extends Application {
     private static int diameter = 15;
     private static int points = 1;
 
-    int ballSpeedX = 1;
-    int ballSpeedY = 1;
+    double ballSpeedX = 1;
+    double ballSpeedY = 1;
     int startXUser = 0;
     int startXOpp = width - paddleWidth;
     double startYUser = height / 2;
@@ -124,8 +124,8 @@ public class OmegaApp extends Application {
     private void setContents(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, width, height);
-        gc.setFill(Color.WHITE);
-        gc.setFont(Font.font(25));
+        gc.setFill(Color.GREEN);
+        gc.setFont(Font.font(35));
     } //setContents
 
     /**
@@ -178,34 +178,33 @@ public class OmegaApp extends Application {
                 + " CLICK TO REPLAY!", width / 2, height / 2);
             ballPosX = width / 2;
             ballPosY = height / 2;
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedX = 1;
-            } else {
-                ballSpeedX = -1;
-            } //if
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedY = 1;
-            } else {
-                ballSpeedY = -1;
-            } //if
+            gameStart();
         } else {
-            gc.setStroke(Color.RED);
+            gc.setStroke(Color.YELLOW);
             gc.setTextAlign(TextAlignment.CENTER);
             gc.strokeText("PONG! Click to Launch the Ball!", width / 2, height / 2);
             ballPosX = width / 2;
             ballPosY = height / 2;
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedX = 1;
-            } else {
-                ballSpeedX = -1;
-            } //if
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedY = 1;
-            } else {
-                ballSpeedY = -1;
-            } //if
+            gameStart();
         } //else
     } //winnerScreen
+
+    /**
+     * At the start of the game this determines which direction the ball should launch.
+     * Takes a 50/50 chance for the X and Y axis, so the game can start in 4 different ways.
+     */
+    private void gameStart() {
+        if (new Random().nextInt(2) == 0) {
+            ballSpeedX = 1;
+        } else {
+            ballSpeedX = -1;
+        } //if
+        if (new Random().nextInt(2) == 0) {
+            ballSpeedY = 1;
+        } else {
+            ballSpeedY = -1;
+        } //if
+    } //gameStart
 } // OmegaApp
 
 
