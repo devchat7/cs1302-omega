@@ -16,7 +16,8 @@ import javafx.util.Duration;
 import javafx.application.Platform;
 
 /**
- * REPLACE WITH NON-SHOUTING DESCRIPTION OF YOUR APP.
+ * PONG game against an AI. Move your paddle with the mouse and get the ball past
+ * your opponent to score a point. First to three points wins.
  */
 public class OmegaApp extends Application {
 
@@ -26,7 +27,7 @@ public class OmegaApp extends Application {
     private static int paddleWidth = 10;
     private static int paddleHeight = 80;
     private static int diameter = 15;
-    private static int points = 1;
+    private static int points = 3;
 
     double ballSpeedX = 1;
     double ballSpeedY = 1;
