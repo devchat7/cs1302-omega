@@ -26,6 +26,7 @@ public class OmegaApp extends Application {
     private static int paddleWidth = 15;
     private static int paddleHeight = 100;
     private static int diameter = 15;
+    private static int points = 1;
 
     int ballSpeedX = 1;
     int ballSpeedY = 1;
@@ -57,6 +58,10 @@ public class OmegaApp extends Application {
         tl.setCycleCount(Timeline.INDEFINITE);
         canvas.setOnMouseMoved(e -> startYUser  = e.getY());
 		canvas.setOnMouseClicked(e ->  gameStart = true);
+        if (scoreUser == points || scoreOpp == points) {
+            canvas.setOnMouseClicked(e ->  scoreUser = 0);
+            canvas.setOnMouseClicked(e -> scoreOpp = 0);
+        } //if
         //setup Stage
         stage.setTitle("OmegaApp!");
         stage.setScene(new Scene(new StackPane(canvas)));
@@ -88,6 +93,14 @@ public class OmegaApp extends Application {
         } else {
             winnerScreen(gc);
         } //else
+        if (((ballPosX + diameter > startXOpp) && ballPosY >= startYOpp &&
+        ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
+        + paddleWidth) && ballPosY >= startXUser && ballPosY <= startYUser + paddleHeight)) {
+            ballSpeedY += 1 * Math.signum(ballSpeedY);
+            ballSpeedY *= -1;
+            ballSpeedX += 1 * Math.signum(ballSpeedX);
+            ballSpeedX *= -1;
+        } //if
         gc.fillText(scoreUser + "             " + scoreOpp, width / 2, 100);
         gc.fillRect(startXOpp, startYOpp, paddleWidth, paddleHeight);
 		gc.fillRect(startXUser, startYUser, paddleWidth, paddleHeight);
@@ -127,7 +140,7 @@ public class OmegaApp extends Application {
     } //score
 
     private void winnerScreen(GraphicsContext gc) {
-        if (scoreUser == 1 || scoreOpp == 1) {
+        if (scoreUser == points || scoreOpp == points) {
             if (scoreUser > scoreOpp) {
                 winner = "YOU";
             } else {
