@@ -23,13 +23,13 @@ public class OmegaApp extends Application {
     //initializing variables
     private static int width = 800;
     private static int height = 600;
-    private static int paddleWidth = 15;
-    private static int paddleHeight = 100;
+    private static int paddleWidth = 10;
+    private static int paddleHeight = 80;
     private static int diameter = 15;
     private static int points = 1;
 
-    int ballSpeedX = 1;
-    int ballSpeedY = 1;
+    double ballSpeedX = 1;
+    double ballSpeedY = 1;
     int startXUser = 0;
     int startXOpp = width - paddleWidth;
     double startYUser = height / 2;
@@ -57,11 +57,7 @@ public class OmegaApp extends Application {
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
         tl.setCycleCount(Timeline.INDEFINITE);
         canvas.setOnMouseMoved(e -> startYUser  = e.getY());
-		canvas.setOnMouseClicked(e ->  gameStart = true);
-        if (scoreUser == points || scoreOpp == points) {
-            canvas.setOnMouseClicked(e ->  scoreUser = 0);
-            canvas.setOnMouseClicked(e -> scoreOpp = 0);
-        } //if
+        canvas.setOnMouseClicked(e -> mouseClick());
         //setup Stage
         stage.setTitle("OmegaApp!");
         stage.setScene(new Scene(new StackPane(canvas)));
@@ -70,6 +66,18 @@ public class OmegaApp extends Application {
         stage.show();
         tl.play();
     } // start
+
+    /**
+     * Method that sets gameStart to true when mouse is clicked.
+     * In the event that someone has won, sets the click to reset the score.
+     */
+    private void mouseClick() {
+        gameStart = true;
+        if (scoreUser == points || scoreOpp == points) {
+            resetScore();
+            System.out.println("Running");
+        } //if
+    } //mouseClick
 
     /**
      * Creats the aspects for the stage. Inputs the graphics content from the canvas to display.
@@ -88,14 +96,14 @@ public class OmegaApp extends Application {
                 } else {
                     startYOpp = startYOpp - 1;
                 } //else
-            }//if
+            } //if
             gc.fillOval(ballPosX, ballPosY, diameter, diameter);
         } else {
             winnerScreen(gc);
         } //else
         if (((ballPosX + diameter > startXOpp) && ballPosY >= startYOpp &&
-        ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
-        + paddleWidth) && ballPosY >= startXUser && ballPosY <= startYUser + paddleHeight)) {
+            ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
+            + paddleWidth) && ballPosY >= startYUser && ballPosY <= startYUser + paddleHeight)) {
             ballSpeedY += 1 * Math.signum(ballSpeedY);
             ballSpeedY *= -1;
             ballSpeedX += 1 * Math.signum(ballSpeedX);
@@ -103,18 +111,23 @@ public class OmegaApp extends Application {
         } //if
         gc.fillText(scoreUser + "             " + scoreOpp, width / 2, 100);
         gc.fillRect(startXOpp, startYOpp, paddleWidth, paddleHeight);
-		gc.fillRect(startXUser, startYUser, paddleWidth, paddleHeight);
+        gc.fillRect(startXUser, startYUser, paddleWidth, paddleHeight);
         score();
         border();
     } //run
 
-
+    /**
+     * Sets the GraphicsContext background screen.
+     * @param gc is the overall screen that creates
+     * the frae for the game.
+     */
     private void setContents(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, width, height);
-		gc.setFill(Color.WHITE);
-		gc.setFont(Font.font(25));
-    }
+        gc.setFill(Color.GREEN);
+        gc.setFont(Font.font(35));
+    } //setContents
+
     /**
      * Creates the bottom and the top border so that ball can
      * bounce off.
@@ -139,6 +152,19 @@ public class OmegaApp extends Application {
         } //if
     } //score
 
+    /**
+     * Sets the score back to 0 to 0.
+     */
+    private void resetScore() {
+        scoreUser = 0;
+        scoreOpp = 0;
+    } //resetScore
+
+    /**
+     * Uses score to display the winner screen.
+     * @param gc the screen that prints the winner and that the
+     * game has ended.
+     */
     private void winnerScreen(GraphicsContext gc) {
         if (scoreUser == points || scoreOpp == points) {
             if (scoreUser > scoreOpp) {
@@ -152,34 +178,33 @@ public class OmegaApp extends Application {
                 + " CLICK TO REPLAY!", width / 2, height / 2);
             ballPosX = width / 2;
             ballPosY = height / 2;
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedX = 1;
-            } else {
-                ballSpeedX = -1;
-            } //if
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedY = 1;
-            } else {
-                ballSpeedY = -1;
-            } //if
+            gameStart();
         } else {
-            gc.setStroke(Color.RED);
+            gc.setStroke(Color.YELLOW);
             gc.setTextAlign(TextAlignment.CENTER);
             gc.strokeText("PONG! Click to Launch the Ball!", width / 2, height / 2);
             ballPosX = width / 2;
             ballPosY = height / 2;
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedX = 1;
-            } else {
-                ballSpeedX = -1;
-            } //if
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedY = 1;
-            } else {
-                ballSpeedY = -1;
-            } //if
+            gameStart();
         } //else
     } //winnerScreen
+
+    /**
+     * At the start of the game this determines which direction the ball should launch.
+     * Takes a 50/50 chance for the X and Y axis, so the game can start in 4 different ways.
+     */
+    private void gameStart() {
+        if (new Random().nextInt(2) == 0) {
+            ballSpeedX = 1;
+        } else {
+            ballSpeedX = -1;
+        } //if
+        if (new Random().nextInt(2) == 0) {
+            ballSpeedY = 1;
+        } else {
+            ballSpeedY = -1;
+        } //if
+    } //gameStart
 } // OmegaApp
 
 
