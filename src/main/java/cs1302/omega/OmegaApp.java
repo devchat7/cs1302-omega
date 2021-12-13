@@ -116,7 +116,11 @@ public class OmegaApp extends Application {
         border();
     } //run
 
-
+    /**
+     * Sets the GraphicsContext background screen.
+     * @param gc is the overall screen that creates
+     * the frae for the game.
+     */
     private void setContents(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, width, height);
@@ -148,11 +152,19 @@ public class OmegaApp extends Application {
         } //if
     } //score
 
+    /**
+     * Sets the score back to 0 to 0.
+     */
     private void resetScore() {
         scoreUser = 0;
         scoreOpp = 0;
     } //resetScore
 
+    /**
+     * Uses score to display the winner screen.
+     * @param gc the screen that prints the winner and that the
+     * game has ended.
+     */
     private void winnerScreen(GraphicsContext gc) {
         if (scoreUser == points || scoreOpp == points) {
             if (scoreUser > scoreOpp) {
