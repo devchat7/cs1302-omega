@@ -23,8 +23,8 @@ public class OmegaApp extends Application {
     //initializing variables
     private static int width = 800;
     private static int height = 600;
-    private static int paddleWidth = 15;
-    private static int paddleHeight = 100;
+    private static int paddleWidth = 10;
+    private static int paddleHeight = 80;
     private static int diameter = 15;
     private static int points = 1;
 
@@ -59,8 +59,8 @@ public class OmegaApp extends Application {
         canvas.setOnMouseMoved(e -> startYUser  = e.getY());
 		canvas.setOnMouseClicked(e ->  gameStart = true);
         if (scoreUser == points || scoreOpp == points) {
-            canvas.setOnMouseClicked(e ->  scoreUser = 0);
-            canvas.setOnMouseClicked(e -> scoreOpp = 0);
+            canvas.setOnMouseClicked(e -> resetScore());
+            System.out.println("Running");
         } //if
         //setup Stage
         stage.setTitle("OmegaApp!");
@@ -95,7 +95,7 @@ public class OmegaApp extends Application {
         } //else
         if (((ballPosX + diameter > startXOpp) && ballPosY >= startYOpp &&
         ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
-        + paddleWidth) && ballPosY >= startXUser && ballPosY <= startYUser + paddleHeight)) {
+        + paddleWidth) && ballPosY >= startYUser && ballPosY <= startYUser + paddleHeight)) {
             ballSpeedY += 1 * Math.signum(ballSpeedY);
             ballSpeedY *= -1;
             ballSpeedX += 1 * Math.signum(ballSpeedX);
@@ -138,6 +138,11 @@ public class OmegaApp extends Application {
             gameStart = false;
         } //if
     } //score
+
+    private void resetScore() {
+        scoreUser = 0;
+        scoreOpp = 0;
+    } //resetScore
 
     private void winnerScreen(GraphicsContext gc) {
         if (scoreUser == points || scoreOpp == points) {
