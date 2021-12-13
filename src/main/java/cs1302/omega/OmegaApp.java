@@ -57,11 +57,7 @@ public class OmegaApp extends Application {
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e -> run(gc)));
         tl.setCycleCount(Timeline.INDEFINITE);
         canvas.setOnMouseMoved(e -> startYUser  = e.getY());
-		canvas.setOnMouseClicked(e ->  gameStart = true);
-        if (scoreUser == points || scoreOpp == points) {
-            canvas.setOnMouseClicked(e -> resetScore());
-            System.out.println("Running");
-        } //if
+        canvas.setOnMouseClicked(e -> mouseClick());
         //setup Stage
         stage.setTitle("OmegaApp!");
         stage.setScene(new Scene(new StackPane(canvas)));
@@ -70,6 +66,18 @@ public class OmegaApp extends Application {
         stage.show();
         tl.play();
     } // start
+
+    /**
+     * Method that sets gameStart to true when mouse is clicked.
+     * In the event that someone has won, sets the click to reset the score.
+     */
+    private void mouseClick() {
+        gameStart = true;
+        if (scoreUser == points || scoreOpp == points) {
+            resetScore();
+            System.out.println("Running");
+        } //if
+    } //mouseClick
 
     /**
      * Creats the aspects for the stage. Inputs the graphics content from the canvas to display.
@@ -88,14 +96,14 @@ public class OmegaApp extends Application {
                 } else {
                     startYOpp = startYOpp - 1;
                 } //else
-            }//if
+            } //if
             gc.fillOval(ballPosX, ballPosY, diameter, diameter);
         } else {
             winnerScreen(gc);
         } //else
         if (((ballPosX + diameter > startXOpp) && ballPosY >= startYOpp &&
-        ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
-        + paddleWidth) && ballPosY >= startYUser && ballPosY <= startYUser + paddleHeight)) {
+            ballPosY <= startYOpp + paddleHeight) || ((ballPosX < startXUser
+            + paddleWidth) && ballPosY >= startYUser && ballPosY <= startYUser + paddleHeight)) {
             ballSpeedY += 1 * Math.signum(ballSpeedY);
             ballSpeedY *= -1;
             ballSpeedX += 1 * Math.signum(ballSpeedX);
@@ -103,7 +111,7 @@ public class OmegaApp extends Application {
         } //if
         gc.fillText(scoreUser + "             " + scoreOpp, width / 2, 100);
         gc.fillRect(startXOpp, startYOpp, paddleWidth, paddleHeight);
-		gc.fillRect(startXUser, startYUser, paddleWidth, paddleHeight);
+        gc.fillRect(startXUser, startYUser, paddleWidth, paddleHeight);
         score();
         border();
     } //run
@@ -112,9 +120,10 @@ public class OmegaApp extends Application {
     private void setContents(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, width, height);
-		gc.setFill(Color.WHITE);
-		gc.setFont(Font.font(25));
-    }
+        gc.setFill(Color.WHITE);
+        gc.setFont(Font.font(25));
+    } //setContents
+
     /**
      * Creates the bottom and the top border so that ball can
      * bounce off.
