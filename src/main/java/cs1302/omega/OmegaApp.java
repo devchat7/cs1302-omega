@@ -38,6 +38,7 @@ public class OmegaApp extends Application {
     boolean gameStart;
     int ballPosX = width / 2;
     int ballPosY = height / 2;
+    String winner;
 
 /**
  * Constructs an {@code OmegaApp} object. This default (i.e., no argument)
@@ -70,10 +71,7 @@ public class OmegaApp extends Application {
      * @param gc the GraphicsContext implementation that will be used in a timeline at start.
      */
     private void run(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, width, height);
-		gc.setFill(Color.WHITE);
-		gc.setFont(Font.font(25));
+        setContents(gc);
         if (gameStart) {
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
@@ -86,30 +84,24 @@ public class OmegaApp extends Application {
                     startYOpp = startYOpp - 1;
                 } //else
             }//if
-
             gc.fillOval(ballPosX, ballPosY, diameter, diameter);
         } else {
-            gc.setStroke(Color.RED);
-			gc.setTextAlign(TextAlignment.CENTER);
-			gc.strokeText("PONG! Click to Launch the Ball!", width / 2, height / 2);
-			ballPosX = width / 2;
-			ballPosY = height / 2;
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedX = 1;
-            } else {
-                ballSpeedX = -1;
-            } //if
-            if (new Random().nextInt(2) == 0) {
-                ballSpeedY = 1;
-            } else {
-                ballSpeedY = -1;
-            } //if
+            winnerScreen(gc);
         } //else
         gc.fillText(scoreUser + "             " + scoreOpp, width / 2, 100);
+        gc.fillRect(startXOpp, startYOpp, paddleWidth, paddleHeight);
+		gc.fillRect(startXUser, startYUser, paddleWidth, paddleHeight);
         score();
         border();
     } //run
 
+
+    private void setContents(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, width, height);
+		gc.setFill(Color.WHITE);
+		gc.setFont(Font.font(25));
+    }
     /**
      * Creates the bottom and the top border so that ball can
      * bounce off.
@@ -132,7 +124,49 @@ public class OmegaApp extends Application {
             scoreOpp++;
             gameStart = false;
         } //if
-    }
+    } //score
+
+    private void winnerScreen(GraphicsContext gc) {
+        if (scoreUser == 1 || scoreOpp == 1) {
+            if (scoreUser > scoreOpp) {
+                winner = "YOU";
+            } else {
+                winner = "CPU";
+            } //else
+            gc.setStroke(Color.RED);
+            gc.setTextAlign(TextAlignment.CENTER);
+            gc.strokeText("GAME OVER! " + winner + " WON!"
+                + " CLICK TO REPLAY!", width / 2, height / 2);
+            ballPosX = width / 2;
+            ballPosY = height / 2;
+            if (new Random().nextInt(2) == 0) {
+                ballSpeedX = 1;
+            } else {
+                ballSpeedX = -1;
+            } //if
+            if (new Random().nextInt(2) == 0) {
+                ballSpeedY = 1;
+            } else {
+                ballSpeedY = -1;
+            } //if
+        } else {
+            gc.setStroke(Color.RED);
+            gc.setTextAlign(TextAlignment.CENTER);
+            gc.strokeText("PONG! Click to Launch the Ball!", width / 2, height / 2);
+            ballPosX = width / 2;
+            ballPosY = height / 2;
+            if (new Random().nextInt(2) == 0) {
+                ballSpeedX = 1;
+            } else {
+                ballSpeedX = -1;
+            } //if
+            if (new Random().nextInt(2) == 0) {
+                ballSpeedY = 1;
+            } else {
+                ballSpeedY = -1;
+            } //if
+        } //else
+    } //winnerScreen
 } // OmegaApp
 
 
